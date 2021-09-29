@@ -80,8 +80,20 @@ WSGI_APPLICATION = 'wei_project.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
+        'ENGINE': 'django.db.backends.postgresql_psycopg2',
+        'NAME': 'weidb',
+        'USER': 'postgres',
+        'PASSWORD': 'RR3s!kqt5',
+        'HOST': 'localhost',
+        'POST': '',
+    },
+    'poll_results': {
+        'ENGINE': 'django.db.backends.postgresql_psycopg2',
+        'NAME': 'TestPolldb',
+        'USER': 'postgres',
+        'PASSWORD': 'RR3s!kqt5',
+        'HOST': 'localhost',
+        'POST': '',
     }
 }
 
