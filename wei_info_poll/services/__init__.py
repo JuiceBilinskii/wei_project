@@ -1,1 +1,1 @@
-from .general_information import get_general_information_context
+from .poll_information import get_general_information_context, get_characters_context

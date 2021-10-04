@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Список персонажей</title>
+</head>
+<body>
+    <ul>
+        {% for character in characters %}
+        <li><a href="{{ character.url }}">{{ character.name }}</a> - {{ character.height }}</li>
+        {% endfor %}
+    </ul>
+</body>
+</html>

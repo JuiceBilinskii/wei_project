@@ -6,17 +6,17 @@
 </head>
 
 <body>
-    <p>Hello World</p>
-
     <table>
         <tr>
-            <th>Character name</th>
-            <th>Character height</th>
+            <th>Name</th>
+            <th>Height</th>
+            <th>Rating</th>
         </tr>
-        {% for character_data in characters_data %}
+        {% for rating in ratings %}
         <tr>
-            <td>{{ character_data.name }}</td>
-            <td>{{ character_data.height }}</td>
+            <td> <a href="{{ rating.character__url }}">{{ rating.character__name }}</a> </td>
+            <td>{{ rating.character__height }}</td>
+            <td>{{ rating.average_rating }}</td>
         </tr>
         {% endfor %}
     </table>
