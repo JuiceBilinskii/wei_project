@@ -4,7 +4,21 @@
     <meta charset="UTF-8">
     <title>Результаты опроса</title>
 </head>
+
 <body>
     <p>Hello World</p>
+
+    <table>
+        <tr>
+            <th>Character name</th>
+            <th>Character height</th>
+        </tr>
+        {% for character_data in characters_data %}
+        <tr>
+            <td>{{ character_data.name }}</td>
+            <td>{{ character_data.height }}</td>
+        </tr>
+        {% endfor %}
+    </table>
 </body>
 </html>

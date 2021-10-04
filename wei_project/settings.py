@@ -89,10 +89,10 @@ DATABASES = {
     },
     'poll_results': {
         'ENGINE': 'django.db.backends.postgresql_psycopg2',
-        'NAME': 'TestPolldb',
-        'USER': 'postgres',
-        'PASSWORD': 'RR3s!kqt5',
-        'HOST': 'localhost',
+        'NAME': config['PostgreSQL']['database'],
+        'USER': config['PostgreSQL']['user'],
+        'PASSWORD': config['PostgreSQL']['password'],
+        'HOST': config['PostgreSQL']['host'],
         'POST': '',
     }
 }
