@@ -1,0 +1,34 @@
+{% extends 'wei_info_poll/base.html' %}
+
+
+{% block title %}Опросы{% endblock %}
+
+
+{% block content %}
+
+    <ul>
+        {% for poll in polls %}
+            <li>
+                Опрос #{{ poll.id }}. {{ poll.user__first_name }}
+                с коэффициентом достоверности {{ poll.concordance_factor }}
+            </li>
+        {% endfor %}
+    </ul>
+
+    {% for poll in polls %}
+        <table>
+            <tr>
+                <th>Опрос #{{ poll.id }}</th>
+                {% for character in characters %}
+                <th>{{ character.name }}</th>
+                {% endfor %}
+            </tr>
+            {% for character in characters %}
+                <tr>
+                    <th>{{ character.name }}</th>
+                </tr>
+            {% endfor %}
+        </table>
+    {% endfor %}
+
+{% endblock %}

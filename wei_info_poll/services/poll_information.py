@@ -1,4 +1,4 @@
-from ..models import AverageCharactersRating, Characters
+from ..models import AverageCharactersRating, Characters, Polls
 from django.db.models import Avg
 
 
@@ -21,5 +21,16 @@ def get_characters_context():
     characters = Characters.objects.using('poll_results').all()
 
     context = {'characters': characters}
+
+    return context
+
+
+def get_polls_context():
+    polls = Polls.objects.using('poll_results').all()
+    polls = polls.values('id', 'user__first_name', 'concordance_factor')
+
+    characters = Characters.objects.using('poll_results').all()
+
+    context = {'polls': polls, 'characters': characters}
 
     return context
