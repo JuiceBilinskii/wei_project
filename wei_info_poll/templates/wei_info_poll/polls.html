@@ -6,29 +6,44 @@
 
 {% block content %}
 
-    <ul>
+    <table>
+        <tr>
+            <th>Опрос</th>
+            <th>Имя респондента</th>
+            <th>Коэффициент доверия</th>
+            <th>Использование в анализе</th>
+        </tr>
         {% for poll in polls %}
-            <li>
-                Опрос #{{ poll.id }}. {{ poll.user__first_name }}
-                с коэффициентом достоверности {{ poll.concordance_factor }}
-            </li>
+        <tr>
+            <td>{{ poll.id }}</td>
+            <td>{{ poll.user__first_name }}</td>
+            <td>{{ poll.concordance_factor }}</td>
+            <td>{{ poll.analysis_usage }}</td>
+        </tr>
+        {% endfor %}
+    </table>
+
+    <table>
+        <tr>
+            <th></th>
+            {% for column_header in poll_table.column_headers %}
+            <th>{{ column_header }}</th>
+            {% endfor %}
+        </tr>
+        {% for poll_row in poll_table.poll_rows %}
+        <tr>
+            <th>{{ poll_row.row_header }}</th>
+            {% for data in poll_row.row_data %}
+                <td>{{ data }}</td>
+            {% endfor %}
+        </tr>
+        {% endfor %}
+    </table>
+
+    <ul>
+        {% for answer in answers %}
+            <li>{{ answer.character_a__name }} - {{ answer.character_b__name }}: {{ answer.ratio_a_to_b }}</li>
         {% endfor %}
     </ul>
-
-    {% for poll in polls %}
-        <table>
-            <tr>
-                <th>Опрос #{{ poll.id }}</th>
-                {% for character in characters %}
-                <th>{{ character.name }}</th>
-                {% endfor %}
-            </tr>
-            {% for character in characters %}
-                <tr>
-                    <th>{{ character.name }}</th>
-                </tr>
-            {% endfor %}
-        </table>
-    {% endfor %}
 
 {% endblock %}
