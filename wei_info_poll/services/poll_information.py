@@ -3,7 +3,7 @@ from django.db.models import Avg
 
 
 def get_general_information_context():
-    ratings = AverageCharactersRating.objects.using('poll_results').all()
+    ratings = AverageCharactersRating.objects.all()
     ratings = ratings.values('character__name', 'character__height', 'character__url')
     ratings = ratings.annotate(average_rating=Avg('rating'))
 
@@ -18,7 +18,7 @@ def get_general_information_context():
 
 
 def get_characters_context():
-    characters = Characters.objects.using('poll_results').all()
+    characters = Characters.objects.all()
 
     context = {'characters': characters}
 
@@ -26,14 +26,14 @@ def get_characters_context():
 
 
 def get_polls_context():
-    polls = Polls.objects.using('poll_results').all()
+    polls = Polls.objects.all()
     polls = polls.values('id', 'user__first_name', 'concordance_factor', 'analysis_usage')
 
-    answers = Answers.objects.using('poll_results').filter(poll_id=25)
+    answers = Answers.objects.filter(poll_id=25)
     answers = answers.values('character_a__name', 'character_b__name', 'ratio_a_to_b')
     answers = answers.order_by('character_a__name', 'character_b__name')
 
-    characters = Characters.objects.using('poll_results').all().order_by('name')
+    characters = Characters.objects.all().order_by('name')
     number_of_characters = characters.count()
 
     poll_table = {

@@ -79,7 +79,8 @@ WSGI_APPLICATION = 'wei_project.wsgi.application'
 # https://docs.djangoproject.com/en/3.2/ref/settings/#databases
 
 DATABASES = {
-    'default': {
+    'default': {},
+    'users_db': {
         'ENGINE': 'django.db.backends.postgresql_psycopg2',
         'NAME': 'weidb',
         'USER': 'postgres',
@@ -97,6 +98,7 @@ DATABASES = {
     }
 }
 
+DATABASE_ROUTERS = ['wei_project.dbrouters.PollResultsRouter']
 
 # Password validation
 # https://docs.djangoproject.com/en/3.2/ref/settings/#auth-password-validators
